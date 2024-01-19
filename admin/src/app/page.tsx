@@ -43,20 +43,34 @@ export default function Login() {
     }, 2000);
   };
 
+  const images = [
+    {
+      src: "https://images.unsplash.com/photo-1547127796-06bb04e4b315?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      className: "object-fit h-screen w-screen max-md:hidden",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      className: "object-fit h-screen w-screen md:hidden",
+    },
+  ];
+
   return (
-    <main className="min-h-screen w-screen flex flex-col gap-10 items-center justify-center bg-blackBGLoginPage relative">
+    <main className="relative flex min-h-screen w-screen flex-col items-center justify-center gap-10 bg-blackBGLoginPage">
       <div className="absolute inset-0 opacity-25">
-        <Image
-          src="https://images.unsplash.com/photo-1434719079929-f61498a4828e?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          width={0}
-          height={0}
-          sizes="100%"
-          alt="background"
-          className="w-screen h-screen object-fit"
-        />
+        {images.map((image, index) => (
+          <Image
+            key={index}
+            src={image.src}
+            width={0}
+            height={0}
+            sizes="100%"
+            alt="background"
+            className={image.className}
+          />
+        ))}
       </div>
-      <div className="shadow-sm shadow-white w-5/12 p-8 rounded-md max-w-[600px] relative bg-blackBGLoginPage">
-        <h1 className="font-bold text-3xl text-white mb-8 text-center">
+      <div className="relative w-[600px] max-w-[600px] rounded-md bg-blackBGLoginPage p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
+        <h1 className="mb-8 text-center text-3xl font-bold text-white">
           Login
         </h1>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
@@ -88,7 +102,7 @@ export default function Login() {
                 />
                 <button
                   type="button"
-                  className="absolute right-2 top-2 bottom-2 px-1 text-white"
+                  className="absolute bottom-2 right-2 top-2 px-1 text-white"
                   onClick={() => setShowPassword((prevState) => !prevState)}
                 >
                   {showPassword ? <EyeOffIcon /> : <EyeIcon />}
