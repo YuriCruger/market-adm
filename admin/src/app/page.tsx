@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form";
 import { Error } from "@/components/Error";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
+import { auth } from "../services/firebase";
 
 const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
@@ -23,6 +25,22 @@ type UserSchemaProps = z.infer<typeof userSchema>;
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<User>({} as User);
+
+  function handleGoogleSignIn() {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        setUser(result.user);
+
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error signing in with Google:", error);
+      })
+      .finally(() => setIsLoading(false));
+  }
 
   const router = useRouter();
 
@@ -70,9 +88,24 @@ export default function Login() {
         ))}
       </div>
       <div className="relative w-[600px] max-w-[600px] rounded-md bg-blackBGLoginPage p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
-        <h1 className="mb-8 text-center text-3xl font-bold text-white">
-          Login
-        </h1>
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-center text-3xl font-bold text-white">Login</h1>
+
+          <Button
+            onClick={handleGoogleSignIn}
+            type="button"
+            className="flex gap-3 py-7"
+          >
+            <Image
+              src="/login/icon-google.png"
+              alt="Google logo"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-auto min-w-[20px]"
+            />
+          </Button>
+        </div>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <InputGroup>
