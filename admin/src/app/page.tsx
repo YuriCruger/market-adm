@@ -92,11 +92,7 @@ export default function Login() {
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-center text-3xl font-bold text-white">Login</h1>
 
-          <Button
-            onClick={handleGoogleSignIn}
-            type="button"
-            className="flex gap-3 py-7"
-          >
+          <button onClick={handleGoogleSignIn} className="hover:scale-110">
             <Image
               src="/login/icon-google.png"
               alt="Google logo"
@@ -105,7 +101,7 @@ export default function Login() {
               sizes="100vw"
               className="h-auto w-auto min-w-[20px]"
             />
-          </Button>
+          </button>
         </div>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
           <div>
