@@ -46,7 +46,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-blackBGHeader flex h-screen flex-col gap-5 p-8 text-white">
+    <header className="from-blackBGHeader flex  h-screen flex-col gap-5 bg-gradient-to-b p-8 text-white">
       <h2 className="text-3xl font-bold">MARKET</h2>
 
       <nav>
