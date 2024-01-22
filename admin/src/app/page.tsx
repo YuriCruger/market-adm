@@ -27,7 +27,7 @@ type UserSchemaProps = z.infer<typeof userSchema>;
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   function handleGoogleSignIn() {
@@ -44,8 +44,6 @@ export default function Login() {
       })
       .finally(() => setIsLoading(false));
   }
-
-  const router = useRouter();
 
   const {
     register,

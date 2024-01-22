@@ -60,6 +60,7 @@ export function Header() {
       <nav>
         <NavItem title="Home" />
         <NavItem title="Dashboard" />
+        <NavItem title="Profile" />
       </nav>
 
       <div className="mt-auto flex items-center gap-3">
