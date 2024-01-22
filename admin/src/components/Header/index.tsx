@@ -1,17 +1,16 @@
 "use client";
 
-import { InputGroup } from "@/components/InputGroup";
-import { Input } from "@/components/ui/input";
-import { LogOut, SearchIcon } from "lucide-react";
+import { ChevronLeftIcon, LogOut } from "lucide-react";
 import { NavItem } from "./NavItem";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setUser } from "@/app/redux/userSlice";
 import { useRouter } from "next/navigation";
 
 export function Header() {
+  const [headerClose, setHeaderClose] = useState(false);
   const userSelect = useAppSelector((state) => state.user.value);
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -45,26 +44,46 @@ export function Header() {
     dispatch(setUser({}));
   }
 
+  function handleCloseHeader() {
+    setHeaderClose((prevState) => !prevState);
+  }
+
   return (
-    <header className="from-blackBGHeader flex  h-screen flex-col gap-5 bg-gradient-to-b p-8 text-white">
-      <h2 className="text-3xl font-bold">MARKET</h2>
+    <header
+      className={`from-blackBGHeader flex h-screen flex-col gap-5 bg-gradient-to-b p-8 text-white duration-300 ${headerClose ? "w-24 p-5" : "w-[350px]"}`}
+    >
+      <div className="relative flex items-center justify-between">
+        <h2 className={`text-3xl font-bold ${headerClose && "hidden"}`}>
+          MARKET
+        </h2>
+        <Button
+          onClick={handleCloseHeader}
+          className={`absolute -right-12 h-10 w-10 rounded-full border-none bg-purple-500 p-0 hover:text-purple-500 ${headerClose && "top-6 rotate-180 transform"}`}
+        >
+          <ChevronLeftIcon />
+        </Button>
+      </div>
 
       <nav>
-        <NavItem title="Home" />
-        <NavItem title="Dashboard" />
-        <NavItem title="Profile" />
+        <NavItem title="Home" headerClose={headerClose} />
+        <NavItem title="Dashboard" headerClose={headerClose} />
+        <NavItem title="Profile" headerClose={headerClose} />
       </nav>
 
-      <div className="mt-auto flex items-center gap-3">
+      <div
+        className={`mt-auto flex items-center gap-3 ${headerClose && "flex-col"}`}
+      >
         <Avatar>
           {userSelect && <AvatarImage src={userSelect.photoURL!} />}
           <AvatarFallback className="text-black">{initials}</AvatarFallback>
         </Avatar>
-        <div>
-          <p className="font-bold">{displayName}</p>
-          <p className="text-sm text-grayText">{userSelect.email}</p>
-        </div>
-        <Button onClick={handleLogOut} className="h-10 w-14">
+        {!headerClose && (
+          <div>
+            <p className="font-bold">{displayName}</p>
+            <p className="text-sm text-grayText">{userSelect.email}</p>
+          </div>
+        )}
+        <Button onClick={handleLogOut} className="h-10 w-14 border-none">
           <LogOut />
         </Button>
       </div>

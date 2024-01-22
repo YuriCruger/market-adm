@@ -4,18 +4,19 @@ import { usePathname } from "next/navigation";
 
 interface NavItemProps {
   title: string;
+  headerClose: boolean;
 }
 
-export function NavItem({ title }: NavItemProps) {
+export function NavItem({ title, headerClose }: NavItemProps) {
   const pathname = usePathname().toLowerCase().replace(/^\//, "");
 
   return (
     <Link href={title.toLowerCase()}>
       <button
-        className={`easy-in-out hover:bg-grayHover flex w-full cursor-pointer items-center p-3 transition duration-200 ${pathname === title.toLowerCase() ? "bg-grayHover" : ""}`}
+        className={`easy-in-out hover:bg-grayHover flex w-full cursor-pointer items-center p-3 transition duration-200 ${pathname === title.toLowerCase() ? "bg-grayHover" : ""} ${headerClose && " justify-center"}`}
       >
         {NAV_ICON[title as keyof typeof NAV_ICON]}
-        <h3 className="ml-3 font-bold">{title}</h3>
+        {!headerClose && <h3 className="ml-3 font-bold">{title}</h3>}
       </button>
     </Link>
   );
