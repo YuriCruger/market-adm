@@ -12,8 +12,10 @@ import { useForm } from "react-hook-form";
 import { Error } from "@/components/Error";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase";
+import { useAppDispatch } from "@/app/redux/hooks";
+import { setUser } from "@/app/redux/userSlice";
 
 const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
@@ -25,14 +27,15 @@ type UserSchemaProps = z.infer<typeof userSchema>;
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [user, setUser] = useState<User>({} as User);
+
+  const dispatch = useAppDispatch();
 
   function handleGoogleSignIn() {
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
       .then((result) => {
-        setUser(result.user);
+        dispatch(setUser(result.user));
 
         router.push("/dashboard");
       })
