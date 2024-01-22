@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
 import { setUser } from "@/app/redux/userSlice";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function Header() {
   const [headerClose, setHeaderClose] = useState(false);
@@ -53,9 +54,11 @@ export function Header() {
       className={`from-blackBGHeader flex h-screen flex-col gap-5 bg-gradient-to-b p-8 text-white duration-300 ${headerClose ? "w-24 p-5" : "w-[350px]"}`}
     >
       <div className="relative flex items-center justify-between">
-        <h2 className={`text-3xl font-bold ${headerClose && "hidden"}`}>
-          MARKET
-        </h2>
+        <Link href="/home">
+          <h2 className={`text-3xl font-bold ${headerClose && "hidden"}`}>
+            MARKET
+          </h2>
+        </Link>
         <Button
           onClick={handleCloseHeader}
           className={`absolute -right-12 h-10 w-10 rounded-full border-none bg-purple-500 p-0 hover:text-purple-500 ${headerClose && "top-6 rotate-180 transform"}`}
