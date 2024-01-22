@@ -20,6 +20,7 @@ const config = {
     extend: {
       colors: {
         grayText: "#9c9b98",
+        grayHover: "#505050",
         blackBGLoginPage: "#09090B",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Header } from "../../components/Header";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -10,9 +11,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-blackBGLoginPage min-h-screen w-screen">
+    <main className="min-h-screen w-screen bg-blackBGLoginPage">
       <div className="flex">
-        <h1 className="text-[#f0f]">SIDEBAR</h1>
+        <Header />
         {children}
       </div>
     </main>
