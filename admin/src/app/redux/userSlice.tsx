@@ -1,11 +1,15 @@
-"use client";
+// userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
+
+const storedUserString = localStorage.getItem("@market/userClient");
+const initialState =
+  typeof storedUserString === "string" ? JSON.parse(storedUserString) : {};
 
 export const userSlice = createSlice({
   name: "data",
   initialState: {
-    value: {} as User,
+    value: initialState as User,
   },
   reducers: {
     setUser: (state, action) => {
