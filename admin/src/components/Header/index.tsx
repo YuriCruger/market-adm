@@ -51,7 +51,7 @@ export function Header() {
 
   return (
     <header
-      className={`from-blackBGHeader flex h-screen flex-col gap-5 bg-gradient-to-b p-8 text-white duration-300 ${headerClose ? "w-24 p-5" : "w-[350px]"}`}
+      className={`flex h-screen flex-col gap-5 bg-gradient-to-b from-blackBGHeader p-8 text-white duration-300 ${headerClose ? "w-24 p-4" : "w-[350px]"}`}
     >
       <div className="relative flex items-center justify-between">
         <Link href="/home">
@@ -69,6 +69,7 @@ export function Header() {
 
       <nav>
         <NavItem title="Home" headerClose={headerClose} />
+        <NavItem title="Inventory" headerClose={headerClose} />
         <NavItem title="Dashboard" headerClose={headerClose} />
         <NavItem title="Profile" headerClose={headerClose} />
       </nav>
