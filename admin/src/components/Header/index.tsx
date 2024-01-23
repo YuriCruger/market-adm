@@ -51,20 +51,21 @@ export function Header() {
 
   return (
     <header
-      className={`flex h-screen flex-col gap-5 bg-gradient-to-b from-blackBGHeader p-8 text-white duration-300 ${headerClose ? "w-24 p-4" : "w-[350px]"}`}
+      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-blackBGHeader p-8 text-white duration-300 ${headerClose ? "w-24 p-4" : "w-[350px]"}`}
     >
-      <div className="relative flex items-center justify-between">
+      <button
+        onClick={handleCloseHeader}
+        className={`absolute -right-10 top-[50%] duration-300 hover:text-purple-500 ${headerClose && "rotate-180 transform"}`}
+      >
+        <ChevronLeftIcon size={30} />
+      </button>
+
+      <div className="flex items-center justify-between">
         <Link href="/home">
           <h2 className={`text-3xl font-bold ${headerClose && "hidden"}`}>
             MARKET
           </h2>
         </Link>
-        <Button
-          onClick={handleCloseHeader}
-          className={`absolute -right-12 h-10 w-10 rounded-full border-none bg-purple-500 p-0 hover:text-purple-500 ${headerClose && "top-6 rotate-180 transform"}`}
-        >
-          <ChevronLeftIcon />
-        </Button>
       </div>
 
       <nav>
