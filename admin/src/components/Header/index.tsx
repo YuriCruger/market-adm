@@ -51,7 +51,7 @@ export function Header() {
 
   return (
     <header
-      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-blackBGHeader p-8 text-white duration-300 ${headerClose ? "w-24 p-4" : "w-[350px]"}`}
+      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-blackBGHeader text-white duration-300 ${headerClose ? "w-24 p-5" : "w-[350px] p-8"}`}
     >
       <button
         onClick={handleCloseHeader}
