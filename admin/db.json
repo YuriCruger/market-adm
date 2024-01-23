@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "name": "Smartphone XYZ",
+      "description": "Um smartphone avançado com recursos poderosos.",
+      "price": 699.99,
+      "category": "Eletrônicos",
+      "brand": "XYZ Corp",
+      "quantityInStock": 50,
+      "reorderLevel": 10,
+      "supplier": "ABC Electronics",
+      "manufacturingDate": "2023-01-15T00:00:00Z",
+      "expirationDate": null,
+      "weight": 0.2,
+      "dimensions": {
+        "length": 5.5,
+        "width": 2.8,
+        "height": 0.3
+      },
+      "images": [
+        "https://example.com/images/smartphone-xyz-front.jpg",
+        "https://example.com/images/smartphone-xyz-back.jpg"
+      ],
+      "isFeatured": true,
+      "createdAt": "2023-01-15T08:00:00Z"
+    },
+    {
+      "id": "e154",
+      "name": "Yuri Cruger",
+      "description": "aaaaaaaaa",
+      "price": "141414",
+      "category": "",
+      "brand": "",
+      "quantityInStock": 0,
+      "reorderLevel": 0,
+      "supplier": "",
+      "manufacturingDate": "",
+      "expirationDate": null,
+      "weight": 0,
+      "dimensions": {
+        "length": 0,
+        "width": 0,
+        "height": 0
+      },
+      "images": [],
+      "isFeatured": false,
+      "createdAt": ""
+    }
+  ]
+}
