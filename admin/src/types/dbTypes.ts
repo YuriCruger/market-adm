@@ -1,4 +1,5 @@
 export interface Product {
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -7,7 +8,7 @@ export interface Product {
   quantityInStock: number;
   reorderLevel: number;
   supplier: string;
-  manufacturingDate: string; // Formato ISO 8601
+  manufacturingDate: string;
   expirationDate: string | null;
   weight: number;
   dimensions: {
@@ -20,6 +21,6 @@ export interface Product {
   createdAt: string; // Formato ISO 8601
 }
 
-interface dbJson {
+export interface ProductsList {
   products: Product[];
 }
