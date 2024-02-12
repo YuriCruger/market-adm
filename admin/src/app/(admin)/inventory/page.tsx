@@ -1,6 +1,5 @@
 "use client";
 
-import { Product } from "@/types/dbTypes";
 import { ProductsDataTable } from "./table/data-table";
 import { columns } from "./table/columns";
 import { getProducts } from "@/utils/data/products";
@@ -10,7 +9,6 @@ import { setData } from "@/app/redux/dataSlice";
 import { useAppSelector } from "@/app/redux/hooks";
 
 export default function Inventory() {
-  const [data, setDataTwo] = useState<Product[]>([]);
   const dispatch = useDispatch();
   const dataSelector = useAppSelector((state) => state.data.value);
 
@@ -18,7 +16,6 @@ export default function Inventory() {
     const fetchData = async () => {
       try {
         const products = await getProducts();
-        setDataTwo(products);
         dispatch(setData(products));
       } catch (error) {
         console.error("Error fetching products:", error);
