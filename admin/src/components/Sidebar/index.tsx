@@ -101,7 +101,6 @@ export function Sidebar() {
       </div>
 
       <nav>
-        <NavItem title="Home" minimizeSidebar={isSidebarCollapsed} />
         <NavItem title="Inventory" minimizeSidebar={isSidebarCollapsed} />
         <NavItem title="Dashboard" minimizeSidebar={isSidebarCollapsed} />
         <NavItem title="Profile" minimizeSidebar={isSidebarCollapsed} />
