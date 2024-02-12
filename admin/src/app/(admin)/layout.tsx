@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -13,7 +13,7 @@ export default function AdminLayout({
   return (
     <main className="min-h-screen w-screen bg-blackBGLoginPage">
       <div className="flex">
-        <Header />
+        <Sidebar />
         {children}
       </div>
     </main>
