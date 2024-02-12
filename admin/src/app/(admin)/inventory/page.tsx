@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setData } from "@/app/redux/dataSlice";
 import { useAppSelector } from "@/app/redux/hooks";
+import { toast } from "@/components/ui/use-toast";
 
 export default function Inventory() {
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ export default function Inventory() {
         const products = await getProducts();
         dispatch(setData(products));
       } catch (error) {
-        console.error("Error fetching products:", error);
+        toast({
+          title: "Error fetching products",
+          description:
+            "An error occurred while fetching products. Please try again later.",
+        });
       }
     };
 

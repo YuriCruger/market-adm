@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Product } from "@/types/dbTypes";
-// import { addProduct } from "@/utils/data/products";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -48,7 +47,11 @@ export function Form() {
 
       reset();
     } catch (error) {
-      console.error("Error adding product:", error);
+      toast({
+        title: "Error adding product",
+        description:
+          "An error occurred while adding the product. Please try again later.",
+      });
     }
   }
 

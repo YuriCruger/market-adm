@@ -73,23 +73,31 @@ export function ProductsDataTable<TData, TValue>({
   const dataSelector = useAppSelector((state) => state.data.value);
 
   const deleteProduct = async () => {
-    const selectedIndexes = Object.keys(rowSelection).map(Number);
+    try {
+      const selectedIndexes = Object.keys(rowSelection).map(Number);
 
-    const removeProduct = dataSelector.filter((_, index) =>
-      selectedIndexes.includes(index),
-    );
+      const removeProduct = dataSelector.filter((_, index) =>
+        selectedIndexes.includes(index),
+      );
 
-    dispatch(removeProducts(removeProduct));
+      const product = removeProduct.map((product) => product.id);
 
-    const product = removeProduct.map((product) => product.id);
+      await axios.delete(`http://localhost:4005/products/${product}`);
 
-    await axios.delete(`http://localhost:4000/products/${product}`);
+      dispatch(removeProducts(removeProduct));
 
-    toast({
-      title: "Product deleted successfully",
-    });
+      toast({
+        title: "Product deleted successfully",
+      });
 
-    setRowSelection({});
+      setRowSelection({});
+    } catch {
+      toast({
+        title: "Error deleting product",
+        description:
+          "An error occurred while deleting the product. Please try again later.",
+      });
+    }
   };
 
   return (

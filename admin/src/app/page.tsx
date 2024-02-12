@@ -16,6 +16,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useAppDispatch } from "@/app/redux/hooks";
 import { setUser } from "@/app/redux/userSlice";
+import { toast } from "@/components/ui/use-toast";
 
 const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
@@ -40,7 +41,11 @@ export default function Login() {
         router.push("/inventory");
       })
       .catch((error) => {
-        console.error("Error signing in with Google:", error);
+        toast({
+          title: "Error signing in with Google",
+          description:
+            "An error occurred while signing in with Google. Please try again later.",
+        });
       })
       .finally(() => setIsLoading(false));
   }
