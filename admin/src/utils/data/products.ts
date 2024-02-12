@@ -17,16 +17,10 @@ export async function addProduct(newProduct: Product) {
   try {
     await axios
       .post("http://localhost:4000/products", newProduct)
-      .then((response) => {
-        console.log("Recurso adicionado com sucesso:", response.data);
-      });
+      .then((response) => {});
     await getProducts();
   } catch (error) {
     console.error("Error adding a new product:", error);
     throw error;
   }
-}
-
-export async function deleteProduct(row: Row<Product>) {
-  console.log("Deleting product:", row);
 }
