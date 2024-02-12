@@ -73,6 +73,13 @@ export function ProductsDataTable<TData, TValue>({
   const dataSelector = useAppSelector((state) => state.data.value);
 
   const deleteProduct = async () => {
+    if (Object.keys(rowSelection).length === 0) {
+      toast({
+        title: "Please select the product you want to delete.",
+      });
+      return;
+    }
+
     try {
       const selectedIndexes = Object.keys(rowSelection).map(Number);
 
@@ -80,9 +87,12 @@ export function ProductsDataTable<TData, TValue>({
         selectedIndexes.includes(index),
       );
 
-      const product = removeProduct.map((product) => product.id);
-
-      await axios.delete(`http://localhost:4005/products/${product}`);
+      await Promise.all(
+        removeProduct.map(async (product) => {
+          const productId = product.id;
+          await axios.delete(`http://localhost:4000/products/${productId}`);
+        }),
+      );
 
       dispatch(removeProducts(removeProduct));
 
