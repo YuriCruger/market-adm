@@ -1,4 +1,3 @@
-// userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 
@@ -7,7 +6,7 @@ const initialState =
   typeof storedUserString === "string" ? JSON.parse(storedUserString) : {};
 
 export const userSlice = createSlice({
-  name: "data",
+  name: "user",
   initialState: {
     value: initialState as User,
   },
