@@ -1,3 +1,4 @@
+import { Product } from "@/types/dbTypes";
 import xlsx, { IJsonSheet } from "json-as-xlsx";
 
 export function downloadToExcel(data: any) {
@@ -23,7 +24,8 @@ export function downloadToExcel(data: any) {
         },
         {
           label: "Date",
-          value: (row) => new Date(row.createdAt).toLocaleDateString(),
+          value: (row) =>
+            new Date(row.createdAt as string).toLocaleDateString(),
         },
       ],
       content: data,
