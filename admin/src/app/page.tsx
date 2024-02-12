@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useAppDispatch } from "@/app/redux/hooks";
-import { setUser } from "@/app/redux/userSlice";
+import { setUser } from "@/app/redux/slices/userSlice";
 import { toast } from "@/components/ui/use-toast";
 
 const userSchema = z.object({

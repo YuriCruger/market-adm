@@ -1,4 +1,4 @@
-import { addProduct } from "@/app/redux/dataSlice";
+import { addProduct } from "@/app/redux/slices/dataSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";

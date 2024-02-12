@@ -5,7 +5,7 @@ import { columns } from "./table/columns";
 import { getProducts } from "@/utils/data/products";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setData } from "@/app/redux/dataSlice";
+import { setData } from "@/app/redux/slices/dataSlice";
 import { useAppSelector } from "@/app/redux/hooks";
 import { toast } from "@/components/ui/use-toast";
 

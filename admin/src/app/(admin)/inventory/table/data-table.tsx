@@ -36,7 +36,7 @@ import { Input } from "@/components/ui/input";
 import { downloadToExcel } from "@/lib/xlsx";
 import { Form } from "./form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
-import { removeProducts } from "@/app/redux/dataSlice";
+import { removeProducts } from "@/app/redux/slices/dataSlice";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
 

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { useEffect, useRef, useState } from "react";
-import { setUser } from "@/app/redux/userSlice";
+import { setUser } from "@/app/redux/slices/userSlice";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
