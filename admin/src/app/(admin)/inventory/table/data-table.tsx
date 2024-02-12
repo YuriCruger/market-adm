@@ -38,6 +38,7 @@ import { Form } from "./form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { removeProducts } from "@/app/redux/dataSlice";
 import axios from "axios";
+import { toast } from "@/components/ui/use-toast";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -83,6 +84,10 @@ export function ProductsDataTable<TData, TValue>({
     const product = removeProduct.map((product) => product.id);
 
     await axios.delete(`http://localhost:4000/products/${product}`);
+
+    toast({
+      title: "Product deleted successfully",
+    });
 
     setRowSelection({});
   };

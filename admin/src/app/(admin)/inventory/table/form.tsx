@@ -45,6 +45,7 @@ export function Form() {
       toast({
         title: "The product has been successfully added!",
       });
+
       reset();
     } catch (error) {
       console.error("Error adding product:", error);
