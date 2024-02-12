@@ -25,7 +25,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -36,6 +35,9 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { downloadToExcel } from "@/lib/xlsx";
 import { Form } from "./form";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { removeProducts } from "@/app/redux/dataSlice";
+import axios from "axios";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -59,13 +61,32 @@ export function ProductsDataTable<TData, TValue>({
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onRowSelectionChange: setRowSelection,
-
     state: {
       sorting,
       columnFilters,
       rowSelection,
     },
   });
+
+  const dispatch = useAppDispatch();
+  const dataSelector = useAppSelector((state) => state.data.value);
+
+  const deleteProduct = async () => {
+    const selectedIndexes = Object.keys(rowSelection).map(Number);
+
+    const removeProduct = dataSelector.filter((_, index) =>
+      selectedIndexes.includes(index),
+    );
+
+    dispatch(removeProducts(removeProduct));
+
+    const product = removeProduct.map((product) => product.id);
+
+    await axios.delete(`http://localhost:4000/products/${product}`);
+
+    setRowSelection({});
+  };
+
   return (
     <Dialog>
       <div className="flex items-center gap-5 py-4">
@@ -77,6 +98,7 @@ export function ProductsDataTable<TData, TValue>({
           }}
           className="max-w-xs"
         />
+
         <DialogTrigger asChild>
           <Button>Add new product</Button>
         </DialogTrigger>
@@ -91,7 +113,11 @@ export function ProductsDataTable<TData, TValue>({
           </DialogHeader>
         </DialogContent>
 
-        <Button onClick={() => downloadToExcel(data)}>Export to Excel</Button>
+        <Button onClick={deleteProduct}>Delete</Button>
+
+        <Button className="ml-auto" onClick={() => downloadToExcel(data)}>
+          Export to Excel
+        </Button>
       </div>
       {/*table*/}
       <div className="rounded-md border">

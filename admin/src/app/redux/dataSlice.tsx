@@ -1,18 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "@/types/dbTypes";
+
+export interface DataState {
+  value: Product[];
+}
+
+const initialState: DataState = {
+  value: [],
+};
 
 export const dataSlice = createSlice({
   name: "data",
-  initialState: {
-    value: [],
-  },
+  initialState,
   reducers: {
-    setData: (state, action) => {
+    setData: (state, action: PayloadAction<Product[]>) => {
       state.value = action.payload;
-      console.log(state.value);
+    },
+    addProduct: (state, action: PayloadAction<Product>) => {
+      state.value.push(action.payload);
+    },
+    removeProducts: (state, action: PayloadAction<Product[]>) => {
+      state.value = state.value.filter((product) => {
+        return !action.payload.some(
+          (removeProduct) => product.id === removeProduct.id,
+        );
+      });
     },
   },
 });
 
-export const { setData } = dataSlice.actions;
+export const { setData, removeProducts, addProduct } = dataSlice.actions;
 export default dataSlice.reducer;

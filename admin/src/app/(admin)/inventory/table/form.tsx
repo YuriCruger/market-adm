@@ -1,18 +1,22 @@
+import { addProduct } from "@/app/redux/dataSlice";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Product } from "@/types/dbTypes";
-import { addProduct } from "@/utils/data/products";
+// import { addProduct } from "@/utils/data/products";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export function Form() {
   const { toast } = useToast();
+  const dispatch = useAppDispatch();
   const productSchema = z.object({
-    id: z.coerce.number(),
+    id: z.string(),
     name: z.string().min(1),
     category: z.string().min(1),
     price: z.coerce.number().min(1),
@@ -26,12 +30,25 @@ export function Form() {
     resolver: zodResolver(productSchema),
   });
 
-  function onSubmit(data: Product) {
-    addProduct(data);
-    toast({
-      title: "The product has been successfully added!",
-    });
-    reset();
+  async function onSubmit(data: Product) {
+    try {
+      const formattedDate = new Date(data.createdAt).toISOString();
+      const newProduct = {
+        ...data,
+        createdAt: formattedDate,
+      };
+
+      dispatch(addProduct(newProduct));
+
+      await axios.post("http://localhost:4000/products", newProduct);
+
+      toast({
+        title: "The product has been successfully added!",
+      });
+      reset();
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
   }
 
   return (

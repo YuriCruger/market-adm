@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Product } from "@/types/dbTypes";
-import { deleteProduct } from "@/utils/data/products";
 import { formatCurrency } from "@/utils/functions/formated-currency";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
@@ -27,7 +26,6 @@ export const columns: ColumnDef<Product>[] = [
           checked={row.getIsSelected()}
           onCheckedChange={(value) => {
             row.toggleSelected(!!value);
-            deleteProduct(row);
           }}
         />
       );

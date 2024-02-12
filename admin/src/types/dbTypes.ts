@@ -1,10 +1,10 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
   category: string;
   quantityInStock: number;
-  createdAt: Date; // Formato ISO 8601
+  createdAt: Date | string;
 }
 
 export interface ProductsList {
