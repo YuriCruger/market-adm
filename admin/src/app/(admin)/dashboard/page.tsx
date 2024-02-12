@@ -1,7 +1,13 @@
+import { ProductsDashboard } from "./components/productsDashboard";
+
+export const metadata = {
+  title: "Dashboard",
+};
+
 export default function Dashboard() {
   return (
-    <div>
-      <h1 className="text-white text-2xl">DASHBOARD</h1>
+    <div className="container py-10">
+      <ProductsDashboard />
     </div>
   );
 }
