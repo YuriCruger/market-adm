@@ -37,7 +37,7 @@ export default function Login() {
       .then((result) => {
         dispatch(setUser(result.user));
 
-        router.push("/home");
+        router.push("/inventory");
       })
       .catch((error) => {
         console.error("Error signing in with Google:", error);
@@ -58,7 +58,7 @@ export default function Login() {
 
     setTimeout(() => {
       setIsLoading(false);
-      router.push("/home");
+      router.push("/inventory");
     }, 2000);
   };
 
