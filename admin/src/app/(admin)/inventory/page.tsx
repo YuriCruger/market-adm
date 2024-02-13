@@ -3,14 +3,13 @@
 import { ProductsDataTable } from "./table/data-table";
 import { columns } from "./table/columns";
 import { getProducts } from "@/utils/data/products";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { setData } from "@/app/redux/slices/dataSlice";
-import { useAppSelector } from "@/app/redux/hooks";
+import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import { toast } from "@/components/ui/use-toast";
 
 export default function Inventory() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const dataSelector = useAppSelector((state) => state.data.value);
 
   useEffect(() => {

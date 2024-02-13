@@ -79,6 +79,22 @@
       "category": "Móveis",
       "quantityInStock": 15,
       "createdAt": "2023-10-25T13:15:00Z"
+    },
+    {
+      "id": "155",
+      "name": "Moto G",
+      "category": "Celular",
+      "price": 500,
+      "quantityInStock": 10,
+      "createdAt": "2022-10-10T00:00:00.000Z"
+    },
+    {
+      "id": "14",
+      "name": "Moto G2",
+      "category": "Celular",
+      "price": 500,
+      "quantityInStock": 12,
+      "createdAt": "2010-10-10T00:00:00.000Z"
     }
   ]
 }
