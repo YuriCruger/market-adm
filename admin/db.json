@@ -81,20 +81,20 @@
       "createdAt": "2023-10-25T13:15:00Z"
     },
     {
-      "id": "155",
+      "id": "4242422",
       "name": "Moto G",
       "category": "Celular",
       "price": 500,
       "quantityInStock": 10,
-      "createdAt": "2022-10-10T00:00:00.000Z"
+      "createdAt": "2012-12-10T00:00:00.000Z"
     },
     {
-      "id": "14",
-      "name": "Moto G2",
+      "id": "1414",
+      "name": "Moto G3",
       "category": "Celular",
       "price": 500,
-      "quantityInStock": 12,
-      "createdAt": "2010-10-10T00:00:00.000Z"
+      "quantityInStock": 8,
+      "createdAt": "1202-12-10T00:00:00.000Z"
     }
   ]
 }

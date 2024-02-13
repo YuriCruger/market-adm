@@ -1,4 +1,4 @@
-import { ProductsDashboard } from "./components/productsDashboard";
+import { DashboardContent } from "./components/dashboardContent";
 
 export const metadata = {
   title: "Dashboard",
@@ -7,7 +7,7 @@ export const metadata = {
 export default function Dashboard() {
   return (
     <div className="container py-10">
-      <ProductsDashboard />
+      <DashboardContent />
     </div>
   );
 }
