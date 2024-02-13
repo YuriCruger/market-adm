@@ -1,7 +1,6 @@
-import { Box, HomeIcon, LayoutDashboardIcon, UserIcon } from "lucide-react";
+import { Box, LayoutDashboardIcon } from "lucide-react";
 
 export const NAV_ICON = {
   Inventory: <Box />,
   Dashboard: <LayoutDashboardIcon />,
-  Profile: <UserIcon />,
 };
