@@ -27,7 +27,7 @@ export function DashboardContent() {
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

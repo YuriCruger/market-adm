@@ -27,7 +27,7 @@ export default function Inventory() {
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container py-10 text-white">
