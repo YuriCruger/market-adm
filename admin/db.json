@@ -1,132 +1,124 @@
 {
   "products": [
     {
+      "id": "2",
+      "name": "Teclado Mecânico GamerX",
+      "price": 129.99,
+      "category": "Teclado",
+      "quantityInStock": 20,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Teclado Sem Fio OfficeY",
+      "price": 79.99,
+      "category": "Teclado",
+      "quantityInStock": 30,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Teclado Compacto TravelZ",
+      "price": 49.99,
+      "category": "Teclado",
+      "quantityInStock": 15,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Celular SmartphoneX",
+      "price": 699.99,
+      "category": "Celular",
+      "quantityInStock": 10,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Celular BasicPhoneY",
+      "price": 99.99,
+      "category": "Celular",
+      "quantityInStock": 25,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Celular FlipPhoneZ",
+      "price": 59.99,
+      "category": "Celular",
+      "quantityInStock": 35,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Mouse GamerX",
+      "price": 89.99,
+      "category": "Mouse",
+      "quantityInStock": 20,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "9",
+      "name": "Mouse Sem Fio OfficeY",
+      "price": 49.99,
+      "category": "Mouse",
+      "quantityInStock": 30,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
+      "id": "10",
+      "name": "Mouse Compacto TravelZ",
+      "price": 29.99,
+      "category": "Mouse",
+      "quantityInStock": 40,
+      "createdAt": "2023-09-18T16:30:00Z"
+    },
+    {
       "id": "11",
-      "name": "VR Headset VirtualRealityX",
-      "price": 349.99,
-      "category": "Games",
+      "name": "Monitor 27' GamerX",
+      "price": 299.99,
+      "category": "Monitor",
       "quantityInStock": 15,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "12",
-      "name": "Smartwatch TechMaster 2000",
+      "name": "Monitor 24' OfficeY",
       "price": 199.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 45,
-      "createdAt": "2023-10-10T11:00:00Z"
+      "category": "Monitor",
+      "quantityInStock": 20,
+      "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "13",
-      "name": "4K Ultra HD TV QuantumVision",
-      "price": 899.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 20,
-      "createdAt": "2023-11-25T13:45:00Z"
+      "name": "Monitor 15' PortableZ",
+      "price": 149.99,
+      "category": "Monitor",
+      "quantityInStock": 25,
+      "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "14",
-      "name": "Portable Bluetooth Speaker HarmonySound",
-      "price": 79.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 60,
-      "createdAt": "2023-12-15T08:30:00Z"
+      "name": "Placa de Vídeo GamerX",
+      "price": 499.99,
+      "category": "Placa de Vídeo",
+      "quantityInStock": 10,
+      "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "15",
-      "name": "Smart Home Security Camera GuardEye",
-      "price": 129.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 35,
-      "createdAt": "2024-01-08T10:15:00Z"
+      "name": "Placa de Vídeo OfficeY",
+      "price": 299.99,
+      "category": "Placa de Vídeo",
+      "quantityInStock": 15,
+      "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "16",
-      "name": "Drone SkyExplorer Pro",
-      "price": 499.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 15,
-      "createdAt": "2024-02-01T15:00:00Z"
-    },
-    {
-      "id": "17",
-      "name": "Yoga Mat EcoBalance",
-      "price": 29.99,
-      "category": "Saúde e Bem-estar",
-      "quantityInStock": 80,
-      "createdAt": "2024-03-20T09:45:00Z"
-    },
-    {
-      "id": "18",
-      "name": "Electric Massage Pillow RelaxPro",
-      "price": 49.99,
-      "category": "Saúde e Bem-estar",
-      "quantityInStock": 50,
-      "createdAt": "2024-04-15T12:30:00Z"
-    },
-    {
-      "id": "19",
-      "name": "NutriBullet Pro Blender",
-      "price": 99.99,
-      "category": "Saúde e Bem-estar",
-      "quantityInStock": 25,
-      "createdAt": "2024-05-10T14:15:00Z"
-    },
-    {
-      "id": "20",
-      "name": "Fitness Resistance Bands Set",
-      "price": 39.99,
-      "category": "Saúde e Bem-estar",
-      "quantityInStock": 70,
-      "createdAt": "2024-06-05T16:00:00Z"
-    },
-    {
-      "id": "21",
-      "name": "Aromatherapy Diffuser BlissfulAroma",
-      "price": 69.99,
-      "category": "Saúde e Bem-estar",
-      "quantityInStock": 39,
-      "createdAt": "2024-07-01T11:30:00Z"
-    },
-    {
-      "id": "22",
-      "name": "Air Fryer DigitalCook",
-      "price": 129.99,
-      "category": "Eletrodomésticos",
-      "quantityInStock": 30,
-      "createdAt": "2024-08-18T10:00:00Z"
-    },
-    {
-      "id": "23",
-      "name": "Robot Vacuum Cleaner SmartCleanPro",
+      "name": "Placa de Vídeo BasicZ",
       "price": 199.99,
-      "category": "Eletrodomésticos",
-      "quantityInStock": 15,
-      "createdAt": "2024-09-12T13:45:00Z"
-    },
-    {
-      "id": "24",
-      "name": "Slow Juicer HealthyBlend",
-      "price": 79.99,
-      "category": "Eletrodomésticos",
-      "quantityInStock": 45,
-      "createdAt": "2024-10-05T14:30:00Z"
-    },
-    {
-      "id": "25",
-      "name": "Coffee Grinder PremiumGrind",
-      "price": 59.99,
-      "category": "Eletrodomésticos",
-      "quantityInStock": 35,
-      "createdAt": "2024-11-20T11:15:00Z"
-    },
-    {
-      "id": "26",
-      "name": "Toaster Oven QuickToast",
-      "price": 89.99,
-      "category": "Eletrodomésticos",
-      "quantityInStock": 25,
-      "createdAt": "2024-12-15T09:30:00Z"
+      "category": "Placa de Vídeo",
+      "quantityInStock": 20,
+      "createdAt": "2023-09-18T16:30:00Z"
     }
   ]
 }

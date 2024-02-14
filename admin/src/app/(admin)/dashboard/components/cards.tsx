@@ -11,8 +11,8 @@ export function Cards() {
   const [lowestStockProduct, setLowestStockProduct] = useState<Product | null>(
     null,
   );
-  const initialTotalStock = 1084;
-  const initialTotalRevenue = 170469.16;
+  const initialTotalStock = 330;
+  const initialTotalRevenue = 47596.7;
 
   const totalRevenue = dataSelector.reduce((total, product) => {
     return total + product.price * product.quantityInStock;
@@ -24,7 +24,6 @@ export function Cards() {
     initialTotalStock,
     totalStock,
   );
-
   const revenuePercentageDifference = calculatePercentageDifference(
     initialTotalRevenue,
     totalRevenue,
