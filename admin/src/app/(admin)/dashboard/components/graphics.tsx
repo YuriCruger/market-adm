@@ -1,14 +1,6 @@
 import { useAppSelector } from "@/app/redux/hooks";
 import { Card } from "@/components/ui/card";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
 interface CategoryDataProps {
   category: string;
