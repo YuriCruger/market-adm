@@ -42,6 +42,10 @@ export const columns: ColumnDef<Product>[] = [
     accessorKey: "category",
   },
   {
+    header: "Serial number",
+    accessorKey: "id",
+  },
+  {
     header: ({ column }) => {
       return (
         <Button
@@ -68,7 +72,7 @@ export const columns: ColumnDef<Product>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Stock_quantity
+          Stock quantity
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -85,7 +89,7 @@ export const columns: ColumnDef<Product>[] = [
             column.toggleSorting(column.getIsSorted() === "asc");
           }}
         >
-          Added_on
+          Added on
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

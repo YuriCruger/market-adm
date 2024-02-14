@@ -15,6 +15,10 @@ export function downloadToExcel(data: any) {
           value: "category",
         },
         {
+          label: "Serial Number",
+          value: "id",
+        },
+        {
           label: "Price",
           value: "price",
         },
@@ -23,7 +27,7 @@ export function downloadToExcel(data: any) {
           value: "quantityInStock",
         },
         {
-          label: "Date",
+          label: "Added on",
           value: (row) =>
             new Date(row.createdAt as string).toLocaleDateString(),
         },
