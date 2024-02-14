@@ -55,6 +55,9 @@ export function Sidebar() {
   function handleLogOut() {
     router.push("/");
     dispatch(setUser({}));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("@market/userClient", JSON.stringify({}));
+    }
   }
 
   function handleMinimizeSidebar() {

@@ -28,11 +28,8 @@ type UserSchemaProps = z.infer<typeof userSchema>;
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [localUser, setLocalUser] = useState({});
   const router = useRouter();
   const dispatch = useAppDispatch();
-
-  localStorage.setItem("@market/userClient", JSON.stringify(localUser));
 
   function handleGoogleSignIn() {
     const provider = new GoogleAuthProvider();
@@ -41,7 +38,12 @@ export default function Login() {
       .then((result) => {
         dispatch(setUser(result.user));
         router.push("/inventory");
-        setLocalUser(result.user);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(
+            "@market/userClient",
+            JSON.stringify(result.user),
+          );
+        }
       })
       .catch(() => {
         toast({
