@@ -56,7 +56,11 @@ export function Graphics() {
             }}
             cursor={<rect fill="#c4b5fd" stroke="#c4b5fd" opacity={0.5} />}
           />
-          <Legend />
+          <Legend
+            formatter={() => {
+              return "Quantity in stock per category";
+            }}
+          />
         </BarChart>
       </Card>
     </div>

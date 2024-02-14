@@ -2,55 +2,55 @@
   "products": [
     {
       "id": "2",
-      "name": "Teclado Mecânico GamerX",
+      "name": "Gaming Mechanical KeyboardX",
       "price": 129.99,
-      "category": "Teclado",
+      "category": "Keyboard",
       "quantityInStock": 20,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "3",
-      "name": "Teclado Sem Fio OfficeY",
+      "name": "Wireless Office KeyboardY",
       "price": 79.99,
-      "category": "Teclado",
+      "category": "Keyboard",
       "quantityInStock": 30,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "4",
-      "name": "Teclado Compacto TravelZ",
+      "name": "Compact Travel KeyboardZ",
       "price": 49.99,
-      "category": "Teclado",
+      "category": "Keyboard",
       "quantityInStock": 15,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "5",
-      "name": "Celular SmartphoneX",
+      "name": "SmartphoneX",
       "price": 699.99,
-      "category": "Celular",
+      "category": "Phone",
       "quantityInStock": 10,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "6",
-      "name": "Celular BasicPhoneY",
+      "name": "Basic PhoneY",
       "price": 99.99,
-      "category": "Celular",
+      "category": "Phone",
       "quantityInStock": 25,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "7",
-      "name": "Celular FlipPhoneZ",
+      "name": "Flip PhoneZ",
       "price": 59.99,
-      "category": "Celular",
+      "category": "Phone",
       "quantityInStock": 35,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "8",
-      "name": "Mouse GamerX",
+      "name": "Gaming MouseX",
       "price": 89.99,
       "category": "Mouse",
       "quantityInStock": 20,
@@ -58,7 +58,7 @@
     },
     {
       "id": "9",
-      "name": "Mouse Sem Fio OfficeY",
+      "name": "Wireless Office MouseY",
       "price": 49.99,
       "category": "Mouse",
       "quantityInStock": 30,
@@ -66,7 +66,7 @@
     },
     {
       "id": "10",
-      "name": "Mouse Compacto TravelZ",
+      "name": "Compact Travel MouseZ",
       "price": 29.99,
       "category": "Mouse",
       "quantityInStock": 40,
@@ -74,7 +74,7 @@
     },
     {
       "id": "11",
-      "name": "Monitor 27' GamerX",
+      "name": "27-inch Gaming MonitorX",
       "price": 299.99,
       "category": "Monitor",
       "quantityInStock": 15,
@@ -82,7 +82,7 @@
     },
     {
       "id": "12",
-      "name": "Monitor 24' OfficeY",
+      "name": "24-inch Office MonitorY",
       "price": 199.99,
       "category": "Monitor",
       "quantityInStock": 20,
@@ -90,7 +90,7 @@
     },
     {
       "id": "13",
-      "name": "Monitor 15' PortableZ",
+      "name": "15-inch Portable MonitorZ",
       "price": 149.99,
       "category": "Monitor",
       "quantityInStock": 25,
@@ -98,25 +98,25 @@
     },
     {
       "id": "14",
-      "name": "Placa de Vídeo GamerX",
+      "name": "Gaming Video CardX",
       "price": 499.99,
-      "category": "Placa de Vídeo",
+      "category": "Video Card",
       "quantityInStock": 10,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "15",
-      "name": "Placa de Vídeo OfficeY",
+      "name": "Office Video CardY",
       "price": 299.99,
-      "category": "Placa de Vídeo",
+      "category": "Video Card",
       "quantityInStock": 15,
       "createdAt": "2023-09-18T16:30:00Z"
     },
     {
       "id": "16",
-      "name": "Placa de Vídeo BasicZ",
+      "name": "Basic Video CardZ",
       "price": 199.99,
-      "category": "Placa de Vídeo",
+      "category": "Video Card",
       "quantityInStock": 20,
       "createdAt": "2023-09-18T16:30:00Z"
     }
