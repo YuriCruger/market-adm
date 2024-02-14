@@ -52,12 +52,6 @@ export function Sidebar() {
     }
   }, [dispatch]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("@market/userClient", JSON.stringify(userSelect));
-    }
-  }, [userSelect]);
-
   function handleLogOut() {
     router.push("/");
     dispatch(setUser({}));
@@ -108,7 +102,7 @@ export function Sidebar() {
       <div
         className={`mt-auto flex items-center gap-3 max-2xl:flex-col ${isSidebarCollapsed && "flex-col"}`}
       >
-        <Avatar className="mx-auto">
+        <Avatar className="2xl:mr-auto">
           {userSelect && <AvatarImage src={userSelect.photoURL!} />}
           <AvatarFallback className="text-black">{initials}</AvatarFallback>
         </Avatar>

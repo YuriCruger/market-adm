@@ -14,7 +14,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase";
-import { useAppDispatch } from "@/app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { setUser } from "@/app/redux/slices/userSlice";
 import { toast } from "@/components/ui/use-toast";
 
@@ -28,8 +28,11 @@ type UserSchemaProps = z.infer<typeof userSchema>;
 export default function Login() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [localUser, setLocalUser] = useState({});
   const router = useRouter();
   const dispatch = useAppDispatch();
+
+  localStorage.setItem("@market/userClient", JSON.stringify(localUser));
 
   function handleGoogleSignIn() {
     const provider = new GoogleAuthProvider();
@@ -37,10 +40,10 @@ export default function Login() {
     signInWithPopup(auth, provider)
       .then((result) => {
         dispatch(setUser(result.user));
-
         router.push("/inventory");
+        setLocalUser(result.user);
       })
-      .catch((error) => {
+      .catch(() => {
         toast({
           title: "Error signing in with Google",
           description:
