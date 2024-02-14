@@ -92,9 +92,7 @@ export function Sidebar() {
       <div
         className={`flex items-center justify-between ${isSidebarCollapsed && "hidden"}`}
       >
-        <Link href="/home">
-          <h2 className={`text-3xl font-bold max-2xl:hidden `}>MARKET</h2>
-        </Link>
+        <h2 className={`text-3xl font-bold max-2xl:hidden `}>MARKET</h2>
       </div>
 
       <nav>
