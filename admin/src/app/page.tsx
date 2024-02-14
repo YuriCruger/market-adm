@@ -79,7 +79,7 @@ export default function Login() {
   ];
 
   return (
-    <main className="relative flex min-h-screen w-screen flex-col items-center justify-center gap-10 bg-blackBGLoginPage">
+    <main className="bg-hardBlack relative flex min-h-screen w-screen flex-col items-center justify-center gap-10">
       <div className="absolute inset-0 opacity-25">
         {images.map((image, index) => (
           <Image
@@ -93,7 +93,7 @@ export default function Login() {
           />
         ))}
       </div>
-      <div className="relative w-[600px] max-w-[600px] rounded-md bg-blackBGLoginPage p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
+      <div className="bg-hardBlack relative w-[600px] max-w-[600px] rounded-md p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-center text-3xl font-bold text-white">Login</h1>
 

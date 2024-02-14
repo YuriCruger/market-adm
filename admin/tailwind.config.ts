@@ -22,7 +22,7 @@ const config = {
         grayText: "#9c9b98",
         grayHover: "#505050",
         softBlack: "#111111",
-        blackBGLoginPage: "#09090B",
+        hardBlack: "#09090B",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

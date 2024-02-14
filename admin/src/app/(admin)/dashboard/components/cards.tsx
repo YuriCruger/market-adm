@@ -11,8 +11,8 @@ export function Cards() {
   const [lowestStockProduct, setLowestStockProduct] = useState<Product | null>(
     null,
   );
-  const initialTotalStock = 475;
-  const initialTotalRevenue = 173295.25;
+  const initialTotalStock = 1084;
+  const initialTotalRevenue = 170469.16;
 
   const totalRevenue = dataSelector.reduce((total, product) => {
     return total + product.price * product.quantityInStock;
@@ -49,7 +49,7 @@ export function Cards() {
     setLowestStockProduct(minStockProduct);
   }, [dataSelector]);
   return (
-    <div className="grid grid-cols-3 gap-x-5">
+    <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
       <CardItem
         description="Total products"
         title={totalStock}

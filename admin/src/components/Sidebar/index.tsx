@@ -74,20 +74,20 @@ export function Sidebar() {
   return (
     <div
       ref={sidebarRef}
-      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-softBlack text-white duration-300 max-md:absolute max-md:-left-96 
+      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-softBlack text-white duration-300 max-2xl:absolute max-2xl:-left-96 
        ${isSidebarCollapsed ? "w-16 p-2" : "w-[350px] p-8"}
-       ${isMenuOpen && "max-md:relative max-md:left-0 max-md:w-24 max-md:p-5"}`}
+       ${isMenuOpen && "max-2xl:relative max-2xl:left-0 max-2xl:w-24 max-2xl:p-5"}`}
     >
       <Button
         onClick={toggleMenu}
-        className={`absolute top-2 border-none md:hidden ${isMenuOpen && "hidden"} ${isSidebarCollapsed ? "-right-[395px]" : "-right-[110px]"}`}
+        className={`absolute top-2 border-none hover:bg-transparent hover:text-white 2xl:hidden ${isMenuOpen && "hidden"} ${isSidebarCollapsed ? "-right-[395px]" : "-right-[110px]"}`}
       >
         <Menu size={30} />
       </Button>
 
       <button
         onClick={handleMinimizeSidebar}
-        className={`absolute -right-10 top-[50%] mx-4 duration-300 hover:text-purple-500 max-md:hidden ${isSidebarCollapsed && "rotate-180 transform"}`}
+        className={`absolute -right-10 top-[50%] mx-4 duration-300 hover:text-purple-500 max-2xl:hidden ${isSidebarCollapsed && "rotate-180 transform"}`}
       >
         <ChevronLeftIcon size={30} />
       </button>
@@ -96,7 +96,7 @@ export function Sidebar() {
         className={`flex items-center justify-between ${isSidebarCollapsed && "hidden"}`}
       >
         <Link href="/home">
-          <h2 className={`text-3xl font-bold max-md:hidden `}>MARKET</h2>
+          <h2 className={`text-3xl font-bold max-2xl:hidden `}>MARKET</h2>
         </Link>
       </div>
 
@@ -106,14 +106,14 @@ export function Sidebar() {
       </nav>
 
       <div
-        className={`mt-auto flex items-center gap-3 max-md:flex-col ${isSidebarCollapsed && "flex-col"}`}
+        className={`mt-auto flex items-center gap-3 max-2xl:flex-col ${isSidebarCollapsed && "flex-col"}`}
       >
         <Avatar className="mx-auto">
           {userSelect && <AvatarImage src={userSelect.photoURL!} />}
           <AvatarFallback className="text-black">{initials}</AvatarFallback>
         </Avatar>
         {!isSidebarCollapsed && (
-          <div className="max-md:hidden">
+          <div className="max-2xl:hidden">
             <p className="font-bold">{displayName}</p>
             <p className="text-sm text-grayText">{userSelect.email}</p>
           </div>

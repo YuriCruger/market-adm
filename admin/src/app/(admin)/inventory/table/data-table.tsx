@@ -112,14 +112,14 @@ export function ProductsDataTable<TData, TValue>({
 
   return (
     <Dialog>
-      <div className="flex items-center gap-5 py-4">
+      <div className="grid grid-cols-2 gap-5 py-4 lg:flex lg:items-center">
         <Input
           placeholder="Filter by name"
           value={(table.getColumn("name")?.getFilterValue() as string) || ""}
           onChange={(e) => {
             table.getColumn("name")?.setFilterValue(e.target.value);
           }}
-          className="max-w-xs"
+          className="lg:max-w-xs"
         />
 
         <DialogTrigger asChild>
@@ -138,7 +138,7 @@ export function ProductsDataTable<TData, TValue>({
 
         <Button onClick={deleteProduct}>Delete</Button>
 
-        <Button className="ml-auto" onClick={() => downloadToExcel(data)}>
+        <Button className="lg:ml-auto" onClick={() => downloadToExcel(data)}>
           Export to Excel
         </Button>
       </div>

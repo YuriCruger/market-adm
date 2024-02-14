@@ -1,100 +1,132 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Smartphone XYZ",
-      "price": 699.99,
-      "category": "Eletrônicos",
-      "quantityInStock": 50,
-      "createdAt": "2023-01-15T08:00:00Z"
+      "id": "11",
+      "name": "VR Headset VirtualRealityX",
+      "price": 349.99,
+      "category": "Games",
+      "quantityInStock": 15,
+      "createdAt": "2023-09-18T16:30:00Z"
     },
     {
-      "id": "2",
-      "name": "Laptop ABC",
-      "price": 1299.99,
-      "category": "Computadores",
-      "quantityInStock": 30,
-      "createdAt": "2023-02-20T10:30:00Z"
-    },
-    {
-      "id": "3",
-      "name": "Smartwatch TechFit",
+      "id": "12",
+      "name": "Smartwatch TechMaster 2000",
       "price": 199.99,
       "category": "Eletrônicos",
-      "quantityInStock": 40,
-      "createdAt": "2023-03-25T12:45:00Z"
+      "quantityInStock": 45,
+      "createdAt": "2023-10-10T11:00:00Z"
     },
     {
-      "id": "4",
-      "name": "Câmera DSLR ProCapture",
-      "price": 1499.99,
-      "category": "Fotografia",
+      "id": "13",
+      "name": "4K Ultra HD TV QuantumVision",
+      "price": 899.99,
+      "category": "Eletrônicos",
       "quantityInStock": 20,
-      "createdAt": "2023-04-10T15:20:00Z"
+      "createdAt": "2023-11-25T13:45:00Z"
     },
     {
-      "id": "5",
-      "name": "Console de Videogame XperienceBox",
-      "price": 499.99,
-      "category": "Games",
-      "quantityInStock": 60,
-      "createdAt": "2023-05-05T18:00:00Z"
-    },
-    {
-      "id": "6",
-      "name": "Teclado Mecânico Gamer TurboType",
+      "id": "14",
+      "name": "Portable Bluetooth Speaker HarmonySound",
       "price": 79.99,
-      "category": "Periféricos",
-      "quantityInStock": 80,
-      "createdAt": "2023-06-15T09:45:00Z"
+      "category": "Eletrônicos",
+      "quantityInStock": 60,
+      "createdAt": "2023-12-15T08:30:00Z"
     },
     {
-      "id": "7",
-      "name": "Mochila Executiva TechTravel",
-      "price": 49.99,
-      "category": "Acessórios",
-      "quantityInStock": 120,
-      "createdAt": "2023-07-20T14:30:00Z"
-    },
-    {
-      "id": "8",
-      "name": "Monitor UltraWide VisionX",
-      "price": 399.99,
-      "category": "Monitores",
-      "quantityInStock": 25,
-      "createdAt": "2023-08-05T16:10:00Z"
-    },
-    {
-      "id": "9",
-      "name": "Impressora Multifuncional PrintMaster",
-      "price": 159.99,
-      "category": "Impressoras",
+      "id": "15",
+      "name": "Smart Home Security Camera GuardEye",
+      "price": 129.99,
+      "category": "Eletrônicos",
       "quantityInStock": 35,
-      "createdAt": "2023-09-30T11:00:00Z"
+      "createdAt": "2024-01-08T10:15:00Z"
     },
     {
-      "id": "10",
-      "name": "Cadeira Gamer ProComfort",
-      "price": 219.99,
-      "category": "Móveis",
+      "id": "16",
+      "name": "Drone SkyExplorer Pro",
+      "price": 499.99,
+      "category": "Eletrônicos",
       "quantityInStock": 15,
-      "createdAt": "2023-10-25T13:15:00Z"
+      "createdAt": "2024-02-01T15:00:00Z"
     },
     {
-      "id": "4242422",
-      "name": "Moto G",
-      "category": "Celular",
-      "price": 500,
-      "quantityInStock": 10,
-      "createdAt": "2012-12-10T00:00:00.000Z"
+      "id": "17",
+      "name": "Yoga Mat EcoBalance",
+      "price": 29.99,
+      "category": "Saúde e Bem-estar",
+      "quantityInStock": 80,
+      "createdAt": "2024-03-20T09:45:00Z"
     },
     {
-      "id": "1414",
-      "name": "Moto G3",
-      "category": "Celular",
-      "price": 500,
-      "quantityInStock": 8,
-      "createdAt": "1202-12-10T00:00:00.000Z"
+      "id": "18",
+      "name": "Electric Massage Pillow RelaxPro",
+      "price": 49.99,
+      "category": "Saúde e Bem-estar",
+      "quantityInStock": 50,
+      "createdAt": "2024-04-15T12:30:00Z"
+    },
+    {
+      "id": "19",
+      "name": "NutriBullet Pro Blender",
+      "price": 99.99,
+      "category": "Saúde e Bem-estar",
+      "quantityInStock": 25,
+      "createdAt": "2024-05-10T14:15:00Z"
+    },
+    {
+      "id": "20",
+      "name": "Fitness Resistance Bands Set",
+      "price": 39.99,
+      "category": "Saúde e Bem-estar",
+      "quantityInStock": 70,
+      "createdAt": "2024-06-05T16:00:00Z"
+    },
+    {
+      "id": "21",
+      "name": "Aromatherapy Diffuser BlissfulAroma",
+      "price": 69.99,
+      "category": "Saúde e Bem-estar",
+      "quantityInStock": 39,
+      "createdAt": "2024-07-01T11:30:00Z"
+    },
+    {
+      "id": "22",
+      "name": "Air Fryer DigitalCook",
+      "price": 129.99,
+      "category": "Eletrodomésticos",
+      "quantityInStock": 30,
+      "createdAt": "2024-08-18T10:00:00Z"
+    },
+    {
+      "id": "23",
+      "name": "Robot Vacuum Cleaner SmartCleanPro",
+      "price": 199.99,
+      "category": "Eletrodomésticos",
+      "quantityInStock": 15,
+      "createdAt": "2024-09-12T13:45:00Z"
+    },
+    {
+      "id": "24",
+      "name": "Slow Juicer HealthyBlend",
+      "price": 79.99,
+      "category": "Eletrodomésticos",
+      "quantityInStock": 45,
+      "createdAt": "2024-10-05T14:30:00Z"
+    },
+    {
+      "id": "25",
+      "name": "Coffee Grinder PremiumGrind",
+      "price": 59.99,
+      "category": "Eletrodomésticos",
+      "quantityInStock": 35,
+      "createdAt": "2024-11-20T11:15:00Z"
+    },
+    {
+      "id": "26",
+      "name": "Toaster Oven QuickToast",
+      "price": 89.99,
+      "category": "Eletrodomésticos",
+      "quantityInStock": 25,
+      "createdAt": "2024-12-15T09:30:00Z"
     }
   ]
 }

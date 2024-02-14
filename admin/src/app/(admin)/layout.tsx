@@ -14,11 +14,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen w-screen bg-blackBGLoginPage">
-      <div className="flex">
-        <Sidebar />
-        {children}
-      </div>
+    <main className="bg-hardBlack flex min-h-screen w-full">
+      <Sidebar />
+      {children}
     </main>
   );
 }

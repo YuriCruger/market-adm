@@ -6,6 +6,7 @@ import { getProducts } from "@/utils/data/products";
 import { setData } from "@/app/redux/slices/dataSlice";
 import { toast } from "@/components/ui/use-toast";
 import { Cards } from "./cards";
+import { Graphics } from "./graphics";
 
 export function DashboardContent() {
   const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ export function DashboardContent() {
   return (
     <>
       <Cards />
+      <Graphics />
     </>
   );
 }
