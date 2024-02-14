@@ -59,7 +59,7 @@ export function Form() {
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
       <div className="grid grid-cols-4 items-center gap-4">
         <Label htmlFor="id" className="text-right">
-          Número de série
+          Serial number
         </Label>
         <Input id="id" className="col-span-3" autoFocus {...register("id")} />
       </div>
