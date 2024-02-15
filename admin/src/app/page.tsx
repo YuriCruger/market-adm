@@ -24,7 +24,7 @@ const userSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
-type UserSchemaProps = z.infer<typeof userSchema>;
+export type UserSchemaProps = z.infer<typeof userSchema>;
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
