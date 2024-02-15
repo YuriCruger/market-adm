@@ -23,10 +23,6 @@ export function DashboardContent() {
     }
   }, [dispatch]);
 
-  if (userSelect && Object.keys(userSelect).length === 0) {
-    return <LoginPrompt />;
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,6 +41,10 @@ export function DashboardContent() {
 
     fetchData();
   }, [dispatch, userSelect]);
+
+  if (userSelect && Object.keys(userSelect).length === 0) {
+    return <LoginPrompt />;
+  }
 
   return (
     <div className="container mt-4 py-10">
