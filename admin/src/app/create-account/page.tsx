@@ -10,12 +10,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FormAuth } from "@/components/FormAuth";
 import { FormAuthTitle } from "@/components/FormAuthTitle";
-import { UserSchemaProps } from "../page";
 
 const newUserSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
+
+type newUserSchemaProps = z.infer<typeof newUserSchema>;
 
 export default function CreateAccount() {
   const router = useRouter();
@@ -26,11 +27,11 @@ export default function CreateAccount() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<UserSchemaProps>({
+  } = useForm<newUserSchemaProps>({
     resolver: zodResolver(newUserSchema),
   });
 
-  const onSubmit = async (data: UserSchemaProps) => {
+  const onSubmit = async (data: newUserSchemaProps) => {
     setIsLoading(true);
 
     await createUserWithEmailAndPassword(auth, data.email, data.password)
