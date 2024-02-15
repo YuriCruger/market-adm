@@ -21,7 +21,7 @@ export function DashboardContent() {
         dispatch(setUser(JSON.parse(storedUser)));
       }
     }
-  }, []);
+  }, [dispatch]);
 
   if (userSelect && Object.keys(userSelect).length === 0) {
     return <LoginPrompt />;

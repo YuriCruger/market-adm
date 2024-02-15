@@ -22,7 +22,7 @@ export default function Inventory() {
         dispatch(setUser(JSON.parse(storedUser)));
       }
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const fetchData = async () => {
