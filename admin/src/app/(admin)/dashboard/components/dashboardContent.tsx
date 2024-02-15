@@ -7,16 +7,33 @@ import { setData } from "@/app/redux/slices/dataSlice";
 import { toast } from "@/components/ui/use-toast";
 import { Cards } from "./cards";
 import { Graphics } from "./graphics";
+import { setUser } from "@/app/redux/slices/userSlice";
+import { LoginPrompt } from "@/components/LoginPrompt";
 
 export function DashboardContent() {
   const dispatch = useAppDispatch();
+  const userSelect = useAppSelector((state) => state.user.value);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("@market/storedUser");
+      if (storedUser) {
+        dispatch(setUser(JSON.parse(storedUser)));
+      }
+    }
+  }, []);
+
+  if (userSelect && Object.keys(userSelect).length === 0) {
+    return <LoginPrompt />;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const products = await getProducts();
-
-        dispatch(setData(products));
+        if (userSelect && Object.keys(userSelect).length !== 0) {
+          const products = await getProducts();
+          dispatch(setData(products));
+        }
       } catch (error) {
         toast({
           title: "Error fetching products",
@@ -27,12 +44,12 @@ export function DashboardContent() {
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, userSelect]);
 
   return (
-    <>
+    <div className="container mt-4 py-10">
       <Cards />
       <Graphics />
-    </>
+    </div>
   );
 }

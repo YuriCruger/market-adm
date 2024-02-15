@@ -1,32 +1,32 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { InputGroup } from "@/components/InputGroup";
 import { useState } from "react";
-import { EyeOffIcon, EyeIcon, Loader } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Error } from "@/components/Error";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../services/firebase";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
-import { setUser } from "@/app/redux/slices/userSlice";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "@/services/firebase";
 import { toast } from "@/components/ui/use-toast";
+import Link from "next/link";
+import { FormAuth } from "@/components/FormAuth";
+import { FormAuthTitle } from "@/components/FormAuthTitle";
+import { useAppDispatch } from "./redux/hooks";
+import { setUser } from "./redux/slices/userSlice";
 
-const userSchema = z.object({
+export const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
-  password: z.string().min(1, "Password is empty"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
-type UserSchemaProps = z.infer<typeof userSchema>;
+export type UserSchemaProps = z.infer<typeof userSchema>;
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -36,13 +36,14 @@ export default function Login() {
 
     signInWithPopup(auth, provider)
       .then((result) => {
-        dispatch(setUser(result.user));
         router.push("/inventory");
+
         if (typeof window !== "undefined") {
-          window.localStorage.setItem(
-            "@market/userClient",
+          const googleUser = window.localStorage.setItem(
+            "@market/storedUser",
             JSON.stringify(result.user),
           );
+          dispatch(setUser(googleUser));
         }
       })
       .catch(() => {
@@ -63,13 +64,29 @@ export default function Login() {
     resolver: zodResolver(userSchema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: UserSchemaProps) => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      setIsLoading(false);
-      router.push("/inventory");
-    }, 2000);
+    await signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(
+            "@market/storedUser",
+            JSON.stringify(user),
+          );
+        }
+        setTimeout(() => {
+          router.push("/inventory");
+        }, 2000);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        toast({
+          title: `${error.code}`,
+          description: `${error.message}`,
+        });
+      });
   };
 
   const images = [
@@ -84,7 +101,7 @@ export default function Login() {
   ];
 
   return (
-    <main className="bg-hardBlack relative flex min-h-screen w-screen flex-col items-center justify-center gap-10">
+    <main className="relative flex min-h-screen w-screen flex-col items-center justify-center gap-10 bg-hardBlack">
       <div className="absolute inset-0 opacity-25">
         {images.map((image, index) => (
           <Image
@@ -98,10 +115,9 @@ export default function Login() {
           />
         ))}
       </div>
-      <div className="bg-hardBlack relative w-[600px] max-w-[600px] rounded-md p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
-        <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-center text-3xl font-bold text-white">Login</h1>
 
+      <div className="relative w-[600px] max-w-[600px] rounded-md bg-hardBlack p-8 shadow-sm shadow-white max-md:w-[400px] max-sm:w-[300px]">
+        <FormAuthTitle title="Login">
           <button onClick={handleGoogleSignIn} className="hover:scale-110">
             <Image
               src="/login/icon-google.png"
@@ -112,52 +128,22 @@ export default function Login() {
               className="h-auto w-auto min-w-[20px]"
             />
           </button>
-        </div>
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <InputGroup>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                placeholder="email@email.com"
-                className="rounded-md placeholder:text-grayText"
-                autoFocus
-                {...register("email")}
-              />
-            </InputGroup>
+        </FormAuthTitle>
 
-            <Error error={errors.email?.message} />
-          </div>
+        <FormAuth
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          register={register}
+          errors={errors}
+          isLoading={isLoading}
+          buttonTitle="Login"
+        />
 
-          <div>
-            <InputGroup>
-              <Label htmlFor="password">Password</Label>
-              <div className="relative">
-                <Input
-                  className="placeholder:text-grayText"
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="********"
-                  {...register("password")}
-                />
-                <button
-                  type="button"
-                  className="absolute bottom-2 right-2 top-2 px-1 text-white"
-                  onClick={() => setShowPassword((prevState) => !prevState)}
-                >
-                  {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-                </button>
-              </div>
-            </InputGroup>
-
-            <Error error={errors.password?.message} />
-          </div>
-
-          <Button type="submit" className="flex gap-3">
-            {isLoading && <Loader className="animate-spin" />}
-            LogIn
-          </Button>
-        </form>
+        <Link href="/create-account">
+          <p className="mt-5 text-xs text-sky-500 hover:underline">
+            Create account
+          </p>
+        </Link>
       </div>
     </main>
   );

@@ -8,7 +8,9 @@ import { Button } from "../ui/button";
 import { useEffect, useRef, useState } from "react";
 import { setUser } from "@/app/redux/slices/userSlice";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { signOut } from "firebase/auth";
+import { toast } from "../ui/use-toast";
+import { auth } from "@/services/firebase";
 
 export function Sidebar() {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -17,14 +19,12 @@ export function Sidebar() {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const displayName = userSelect.displayName ?? "";
+  const userName = userSelect?.displayName ?? userSelect?.email ?? "Guest";
 
-  const words = displayName.split(" ");
-  const firstWord = words[0];
-  const lastWord = words[words.length - 1];
-  const initials = firstWord?.charAt(0) + lastWord?.charAt(0);
+  const firstLetter = userName[0].toLocaleUpperCase();
 
   const sidebarRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -44,20 +44,40 @@ export function Sidebar() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedUserString = localStorage.getItem("@market/userClient");
+      const storedUserString = localStorage.getItem("@market/storedUser");
       if (typeof storedUserString === "string") {
         const storedUser = JSON.parse(storedUserString);
         dispatch(setUser(storedUser));
       }
     }
-  }, [dispatch]);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMenuOpen]);
 
   function handleLogOut() {
-    router.push("/");
-    dispatch(setUser({}));
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("@market/userClient", JSON.stringify({}));
-    }
+    signOut(auth)
+      .then(() => {
+        router.push("/");
+        if (typeof window !== "undefined") {
+          const clearUser = window.localStorage.setItem(
+            "@market/storedUser",
+            JSON.stringify({}),
+          );
+          dispatch(setUser(clearUser));
+        }
+      })
+      .catch((error) => {
+        toast({
+          title: `${error.code}`,
+          description: `${error.message}`,
+        });
+      });
   }
 
   function handleMinimizeSidebar() {
@@ -66,14 +86,19 @@ export function Sidebar() {
 
   function toggleMenu() {
     setMenuOpen((prevState) => !prevState);
+    document.body.style.overflow = "unset";
+  }
+
+  if (userSelect && Object.keys(userSelect).length === 0) {
+    return;
   }
 
   return (
     <div
       ref={sidebarRef}
-      className={`relative flex h-screen flex-col gap-5 bg-gradient-to-b from-softBlack text-white duration-300 max-2xl:absolute max-2xl:-left-96 
+      className={`relative z-10 flex min-h-screen flex-col gap-5 bg-gradient-to-b from-softBlack to-hardBlack text-white duration-300 max-2xl:absolute max-2xl:-left-96
        ${isSidebarCollapsed ? "w-16 p-2" : "w-[350px] p-8"}
-       ${isMenuOpen && "max-2xl:relative max-2xl:left-0 max-2xl:w-24 max-2xl:p-5"}`}
+       ${isMenuOpen && "max-2xl:left-0 max-2xl:w-24 max-2xl:p-5 max-2xl:shadow-md"}`}
     >
       <Button
         onClick={toggleMenu}
@@ -105,14 +130,17 @@ export function Sidebar() {
       >
         <Avatar className="2xl:mr-auto">
           {userSelect && <AvatarImage src={userSelect.photoURL!} />}
-          <AvatarFallback className="text-black">{initials}</AvatarFallback>
+          <AvatarFallback className="font-bold text-black">
+            {firstLetter}
+          </AvatarFallback>
         </Avatar>
         {!isSidebarCollapsed && (
           <div className="max-2xl:hidden">
-            <p className="font-bold">{displayName}</p>
-            <p className="text-sm text-grayText">{userSelect.email}</p>
+            <p className="font-bold">{userSelect?.displayName}</p>
+            <p className="text-sm text-grayText">{userSelect?.email}</p>
           </div>
         )}
+
         <Button onClick={handleLogOut} className="h-10 w-14 border-none">
           <LogOut />
         </Button>

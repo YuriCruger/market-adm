@@ -7,10 +7,22 @@ import { useEffect } from "react";
 import { setData } from "@/app/redux/slices/dataSlice";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
 import { toast } from "@/components/ui/use-toast";
+import { LoginPrompt } from "@/components/LoginPrompt";
+import { setUser } from "@/app/redux/slices/userSlice";
 
 export default function Inventory() {
   const dispatch = useAppDispatch();
   const dataSelector = useAppSelector((state) => state.data.value);
+  const userSelect = useAppSelector((state) => state.user.value);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("@market/storedUser");
+      if (storedUser) {
+        dispatch(setUser(JSON.parse(storedUser)));
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +38,14 @@ export default function Inventory() {
       }
     };
 
-    fetchData();
-  }, [dispatch]);
+    if (userSelect && Object.keys(userSelect).length !== 0) {
+      fetchData();
+    }
+  }, [dispatch, userSelect]);
+
+  if (userSelect && Object.keys(userSelect).length === 0) {
+    return <LoginPrompt />;
+  }
 
   return (
     <div className="container py-10 text-white">
