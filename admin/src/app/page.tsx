@@ -19,7 +19,7 @@ import { FormAuthTitle } from "@/components/FormAuthTitle";
 import { useAppDispatch } from "./redux/hooks";
 import { setUser } from "./redux/slices/userSlice";
 
-export const userSchema = z.object({
+const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
