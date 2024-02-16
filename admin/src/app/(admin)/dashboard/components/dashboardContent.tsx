@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { setData } from "@/app/redux/slices/dataSlice";
 import { toast } from "@/components/ui/use-toast";
 import { Cards } from "./cards";
-import { Graphics } from "./graphics";
+import { Chart } from "./chart";
 import { setUser } from "@/app/redux/slices/userSlice";
 import { LoginPrompt } from "@/components/LoginPrompt";
 import { collection, onSnapshot } from "firebase/firestore";
@@ -43,7 +43,7 @@ export function DashboardContent() {
   return (
     <div className="container mt-4 py-10">
       <Cards />
-      <Graphics />
+      <Chart />
     </div>
   );
 }
