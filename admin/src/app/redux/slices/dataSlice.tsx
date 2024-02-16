@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "@/types/dbTypes";
+import { DocumentData } from "firebase/firestore";
 
 export interface DataState {
-  value: Product[];
+  value: DocumentData[];
 }
 
 const initialState: DataState = {
@@ -13,13 +13,13 @@ export const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {
-    setData: (state, action: PayloadAction<Product[]>) => {
+    setData: (state, action: PayloadAction<DocumentData[]>) => {
       state.value = action.payload;
     },
-    addProduct: (state, action: PayloadAction<Product>) => {
+    addProduct: (state, action: PayloadAction<DocumentData>) => {
       state.value.push(action.payload);
     },
-    removeProducts: (state, action: PayloadAction<Product[]>) => {
+    removeProducts: (state, action: PayloadAction<DocumentData[]>) => {
       state.value = state.value.filter((product) => {
         return !action.payload.some(
           (removeProduct) => product.id === removeProduct.id,

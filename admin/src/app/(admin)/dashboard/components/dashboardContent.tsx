@@ -2,13 +2,14 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { useEffect } from "react";
-import { getProducts } from "@/utils/data/products";
 import { setData } from "@/app/redux/slices/dataSlice";
 import { toast } from "@/components/ui/use-toast";
 import { Cards } from "./cards";
 import { Graphics } from "./graphics";
 import { setUser } from "@/app/redux/slices/userSlice";
 import { LoginPrompt } from "@/components/LoginPrompt";
+import { collection, onSnapshot } from "firebase/firestore";
+import { firestore } from "@/services/firebase";
 
 export function DashboardContent() {
   const dispatch = useAppDispatch();
@@ -24,23 +25,16 @@ export function DashboardContent() {
   }, [dispatch]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (userSelect && Object.keys(userSelect).length !== 0) {
-          const products = await getProducts();
-          dispatch(setData(products));
-        }
-      } catch (error) {
-        toast({
-          title: "Error fetching products",
-          description:
-            "An error occurred while fetching products. Please try again later.",
-        });
-      }
-    };
+    const unsubscribe = onSnapshot(
+      collection(firestore, "products"),
+      (snapshot) => {
+        const newProducts = snapshot.docs.map((doc) => doc.data());
+        dispatch(setData(newProducts));
+      },
+    );
 
-    fetchData();
-  }, [dispatch, userSelect]);
+    return () => unsubscribe();
+  }, []);
 
   if (userSelect && Object.keys(userSelect).length === 0) {
     return <LoginPrompt />;

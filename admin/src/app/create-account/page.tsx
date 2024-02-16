@@ -11,6 +11,7 @@ import { z } from "zod";
 import { FormAuth } from "@/components/FormAuth";
 import { FormAuthTitle } from "@/components/FormAuthTitle";
 import { UserSchemaProps } from "@/app/page";
+import Link from "next/link";
 
 const newUserSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),
@@ -63,6 +64,12 @@ export default function CreateAccount() {
           isLoading={isLoading}
           buttonTitle="Create account"
         />
+
+        <Link href="/">
+          <p className="mt-5 text-xs text-sky-500 hover:underline">
+            I already have an account
+          </p>
+        </Link>
       </div>
     </div>
   );

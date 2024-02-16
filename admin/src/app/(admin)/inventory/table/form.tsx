@@ -1,5 +1,5 @@
 import { addProduct } from "@/app/redux/slices/dataSlice";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { useAppDispatch } from "@/app/redux/hooks";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -7,9 +7,10 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Product } from "@/types/dbTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { firestore } from "@/services/firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 export function Form() {
   const { toast } = useToast();
@@ -29,6 +30,8 @@ export function Form() {
     resolver: zodResolver(productSchema),
   });
 
+  const ordersCollection = collection(firestore, "products");
+
   async function onSubmit(data: Product) {
     try {
       const formattedDate = new Date(data.createdAt).toISOString();
@@ -39,7 +42,12 @@ export function Form() {
 
       dispatch(addProduct(newProduct));
 
-      await axios.post("http://localhost:4000/products", newProduct);
+      const newDocRef = doc(ordersCollection, data.id);
+
+      await setDoc(newDocRef, {
+        ...data,
+        createdAt: formattedDate,
+      });
 
       toast({
         title: "The product has been successfully added!",

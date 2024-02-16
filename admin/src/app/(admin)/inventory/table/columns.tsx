@@ -1,31 +1,49 @@
 "use client";
 
+import { useAppDispatch } from "@/app/redux/hooks";
+import {
+  removeRowSelection,
+  setRowSelection,
+} from "@/app/redux/slices/rowSlice";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Product } from "@/types/dbTypes";
-import { formatCurrency } from "@/utils/functions/formated-currency";
+import { formatCurrency } from "@/utils/formated-currency";
 import { ColumnDef } from "@tanstack/react-table";
+import { DocumentData } from "firebase/firestore";
 import { ArrowUpDown } from "lucide-react";
 
-export const columns: ColumnDef<Product>[] = [
+export const columns: ColumnDef<DocumentData>[] = [
   {
     id: "Select",
-    header: ({ table }) => {
-      return (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onCheckedChange={(value) => {
-            table.toggleAllPageRowsSelected(!!value);
-          }}
-        />
-      );
-    },
+    // header: ({ table }) => {
+    //   const dispatch = useAppDispatch();
+    //   return (
+    //     <Checkbox
+    //       checked={table.getIsAllPageRowsSelected()}
+    //       onCheckedChange={(value) => {
+    //         table.toggleAllPageRowsSelected(!!value);
+    //         if (value) {
+    //           const rowIds = table.getAll();
+    //           console.log(rowIds);
+    //         } else {
+    //           dispatch(removeRowSelection());
+    //         }
+    //       }}
+    //     />
+    //   );
+    // },
     cell: ({ row }) => {
+      const dispatch = useAppDispatch();
       return (
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => {
             row.toggleSelected(!!value);
+            if (value) {
+              dispatch(setRowSelection(row.getValue("id")));
+            } else {
+              dispatch(removeRowSelection());
+            }
           }}
         />
       );

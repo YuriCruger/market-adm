@@ -139,11 +139,19 @@ export default function Login() {
           buttonTitle="Login"
         />
 
-        <Link href="/create-account">
-          <p className="mt-5 text-xs text-sky-500 hover:underline">
-            Create account
-          </p>
-        </Link>
+        <div className="flex gap-5">
+          <Link href="/create-account">
+            <p className="mt-5 text-xs text-sky-500 hover:underline">
+              Create account
+            </p>
+          </Link>
+
+          <Link href="/forgot-password">
+            <p className="mt-5 text-xs text-sky-500 hover:underline">
+              Forgot your password?
+            </p>
+          </Link>
+        </div>
       </div>
     </main>
   );

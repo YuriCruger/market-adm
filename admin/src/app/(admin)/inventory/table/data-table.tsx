@@ -36,9 +36,11 @@ import { Input } from "@/components/ui/input";
 import { downloadToExcel } from "@/lib/xlsx";
 import { Form } from "./form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
-import { removeProducts } from "@/app/redux/slices/dataSlice";
-import axios from "axios";
+
 import { toast } from "@/components/ui/use-toast";
+import { deleteDoc, doc } from "firebase/firestore";
+import { firestore } from "@/services/firebase";
+import { removeRowSelection } from "@/app/redux/slices/rowSlice";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -69,9 +71,8 @@ export function ProductsDataTable<TData, TValue>({
     },
   });
 
+  const rowSelected = useAppSelector((state) => state.row.value);
   const dispatch = useAppDispatch();
-  const dataSelector = useAppSelector((state) => state.data.value);
-
   const deleteProduct = async () => {
     if (Object.keys(rowSelection).length === 0) {
       toast({
@@ -81,27 +82,19 @@ export function ProductsDataTable<TData, TValue>({
     }
 
     try {
-      const selectedIndexes = Object.keys(rowSelection).map(Number);
+      rowSelected.forEach((row) => {
+        const docRef = doc(firestore, `products/${row}`);
 
-      const removeProduct = dataSelector.filter((_, index) =>
-        selectedIndexes.includes(index),
-      );
-
-      await Promise.all(
-        removeProduct.map(async (product) => {
-          const productId = product.id;
-          await axios.delete(`http://localhost:4000/products/${productId}`);
-        }),
-      );
-
-      dispatch(removeProducts(removeProduct));
+        deleteDoc(docRef);
+      });
 
       toast({
         title: "Product deleted successfully",
       });
-
+      dispatch(removeRowSelection());
       setRowSelection({});
-    } catch {
+    } catch (error) {
+      console.log(error);
       toast({
         title: "Error deleting product",
         description:

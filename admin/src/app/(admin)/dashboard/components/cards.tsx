@@ -1,16 +1,15 @@
-import { Product } from "@/types/dbTypes";
-import { calculatePercentageDifference } from "@/utils/functions/calculate-percentage";
-import { formatCurrency } from "@/utils/functions/formated-currency";
+import { calculatePercentageDifference } from "@/utils/calculate-percentage";
+import { formatCurrency } from "@/utils/formated-currency";
 import { useEffect, useState } from "react";
 import { CardItem } from "./cardItem";
 import { useAppSelector } from "@/app/redux/hooks";
+import { DocumentData } from "firebase/firestore";
 
 export function Cards() {
   const dataSelector = useAppSelector((state) => state.data.value);
   const [totalStock, setTotalStock] = useState(0);
-  const [lowestStockProduct, setLowestStockProduct] = useState<Product | null>(
-    null,
-  );
+  const [lowestStockProduct, setLowestStockProduct] =
+    useState<DocumentData | null>(null);
   const initialTotalStock = 330;
   const initialTotalRevenue = 47596.7;
 
@@ -47,6 +46,7 @@ export function Cards() {
     setTotalStock(accumulatedQuantity);
     setLowestStockProduct(minStockProduct);
   }, [dataSelector]);
+
   return (
     <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
       <CardItem

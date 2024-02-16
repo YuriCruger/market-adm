@@ -8,9 +8,9 @@ interface CategoryDataProps {
 }
 
 export function Graphics() {
-  const dataSelect = useAppSelector((state) => state.data.value);
+  const dataSelector = useAppSelector((state) => state.data.value);
 
-  const categoriesWithQuantity = dataSelect.reduce(
+  const categoriesWithQuantity = dataSelector.reduce(
     (accumulator, product) => {
       if (accumulator[product.category]) {
         accumulator[product.category].quantityInStock +=
