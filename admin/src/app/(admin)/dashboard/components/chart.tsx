@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/app/redux/hooks";
+import { useAppSelector } from "@/redux/hooks";
 import { Card } from "@/components/ui/card";
 import {
   BarChart,

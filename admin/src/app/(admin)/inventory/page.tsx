@@ -3,10 +3,10 @@
 import { ProductsDataTable } from "./table/data-table";
 import { columns } from "./table/columns";
 import { useEffect, useState } from "react";
-import { setData } from "@/app/redux/slices/dataSlice";
-import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
+import { setData } from "@/redux/slices/dataSlice";
+import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { LoginPrompt } from "@/components/LoginPrompt";
-import { setUser } from "@/app/redux/slices/userSlice";
+import { setUser } from "@/redux/slices/userSlice";
 import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/services/firebase";
 

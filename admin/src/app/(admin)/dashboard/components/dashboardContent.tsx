@@ -1,12 +1,11 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
-import { setData } from "@/app/redux/slices/dataSlice";
-import { toast } from "@/components/ui/use-toast";
+import { setData } from "@/redux/slices/dataSlice";
 import { Cards } from "./cards";
 import { Chart } from "./chart";
-import { setUser } from "@/app/redux/slices/userSlice";
+import { setUser } from "@/redux/slices/userSlice";
 import { LoginPrompt } from "@/components/LoginPrompt";
 import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/services/firebase";

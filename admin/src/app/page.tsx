@@ -16,8 +16,8 @@ import { toast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { FormAuth } from "@/components/FormAuth";
 import { FormAuthTitle } from "@/components/FormAuthTitle";
-import { useAppDispatch } from "./redux/hooks";
-import { setUser } from "./redux/slices/userSlice";
+import { useAppDispatch } from "../redux/hooks";
+import { setUser } from "../redux/slices/userSlice";
 
 const userSchema = z.object({
   email: z.string().min(1, "Email is empty").email(),

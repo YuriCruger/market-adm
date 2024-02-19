@@ -2,7 +2,7 @@ import { calculatePercentageDifference } from "@/utils/calculate-percentage";
 import { formatCurrency } from "@/utils/formated-currency";
 import { useEffect, useState } from "react";
 import { CardItem } from "./cardItem";
-import { useAppSelector } from "@/app/redux/hooks";
+import { useAppSelector } from "@/redux/hooks";
 import { DocumentData } from "firebase/firestore";
 
 export function Cards() {

@@ -2,11 +2,11 @@
 
 import { ChevronLeftIcon, LogOut, Menu } from "lucide-react";
 import { NavItem } from "./NavItem";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { useEffect, useRef, useState } from "react";
-import { setUser } from "@/app/redux/slices/userSlice";
+import { setUser } from "@/redux/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { toast } from "../ui/use-toast";

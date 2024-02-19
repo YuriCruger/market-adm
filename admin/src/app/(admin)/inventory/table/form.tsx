@@ -1,5 +1,5 @@
-import { addProduct } from "@/app/redux/slices/dataSlice";
-import { useAppDispatch } from "@/app/redux/hooks";
+import { addProduct } from "@/redux/slices/dataSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";

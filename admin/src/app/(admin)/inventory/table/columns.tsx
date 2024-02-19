@@ -1,10 +1,7 @@
 "use client";
 
-import { useAppDispatch } from "@/app/redux/hooks";
-import {
-  removeRowSelection,
-  setRowSelection,
-} from "@/app/redux/slices/rowSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { removeRowSelection, setRowSelection } from "@/redux/slices/rowSlice";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { formatCurrency } from "@/utils/formated-currency";

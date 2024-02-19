@@ -35,12 +35,12 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { downloadToExcel } from "@/lib/xlsx";
 import { Form } from "./form";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import { toast } from "@/components/ui/use-toast";
 import { deleteDoc, doc } from "firebase/firestore";
 import { firestore } from "@/services/firebase";
-import { removeRowSelection } from "@/app/redux/slices/rowSlice";
+import { removeRowSelection } from "@/redux/slices/rowSlice";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
