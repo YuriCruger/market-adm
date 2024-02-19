@@ -9,42 +9,28 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DocumentData } from "firebase/firestore";
 import { ArrowUpDown } from "lucide-react";
 
+function SelectCell({ row }: DocumentData) {
+  const dispatch = useAppDispatch();
+
+  return (
+    <Checkbox
+      checked={row.getIsSelected()}
+      onCheckedChange={(value) => {
+        row.toggleSelected(!!value);
+        if (value) {
+          dispatch(setRowSelection(row.getValue("id")));
+        } else {
+          dispatch(removeRowSelection());
+        }
+      }}
+    />
+  );
+}
+
 export const columns: ColumnDef<DocumentData>[] = [
   {
     id: "Select",
-    // header: ({ table }) => {
-    //   const dispatch = useAppDispatch();
-    //   return (
-    //     <Checkbox
-    //       checked={table.getIsAllPageRowsSelected()}
-    //       onCheckedChange={(value) => {
-    //         table.toggleAllPageRowsSelected(!!value);
-    //         if (value) {
-    //           const rowIds = table.getAll();
-    //           console.log(rowIds);
-    //         } else {
-    //           dispatch(removeRowSelection());
-    //         }
-    //       }}
-    //     />
-    //   );
-    // },
-    cell: ({ row }) => {
-      const dispatch = useAppDispatch();
-      return (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => {
-            row.toggleSelected(!!value);
-            if (value) {
-              dispatch(setRowSelection(row.getValue("id")));
-            } else {
-              dispatch(removeRowSelection());
-            }
-          }}
-        />
-      );
-    },
+    cell: (props) => <SelectCell {...props} />,
     enableSorting: false,
     enableHiding: false,
   },

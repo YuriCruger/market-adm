@@ -22,7 +22,7 @@ export default function Inventory() {
         dispatch(setUser(JSON.parse(storedUser)));
       }
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -34,7 +34,7 @@ export default function Inventory() {
     );
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   if (userSelect && Object.keys(userSelect).length === 0) {
     return <LoginPrompt />;

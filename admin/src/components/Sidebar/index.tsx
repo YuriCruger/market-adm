@@ -50,7 +50,7 @@ export function Sidebar() {
         dispatch(setUser(storedUser));
       }
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isMenuOpen) {

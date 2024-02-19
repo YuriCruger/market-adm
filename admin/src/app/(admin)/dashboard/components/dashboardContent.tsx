@@ -21,7 +21,7 @@ export function DashboardContent() {
         dispatch(setUser(JSON.parse(storedUser)));
       }
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -33,7 +33,7 @@ export function DashboardContent() {
     );
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   if (userSelect && Object.keys(userSelect).length === 0) {
     return <LoginPrompt />;
