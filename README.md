@@ -7,7 +7,9 @@ The second page of the project is a control panel that displays relevant informa
 
 The project is fully integrated with Firebase, both for user authentication and for the database that stores product information.
 
-[Website](https://market-adm.vercel.app) 
+### Online project
+
+[MARKET_ADM](https://market-adm.vercel.app) 
 
 ### Technologies
 * React
